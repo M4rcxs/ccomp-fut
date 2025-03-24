@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FUT CCOMP Plugin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        content: ["./src/**/*.{html,js}"],
+        theme: {
+          name: "Bluewave",
+          fontFamily: {
+            sans: ["Open Sans", "ui-sans-serif", "system-ui", "sans-serif"],
+            title: ["Lato", "ui-sans-serif", "system-ui", "sans-serif"],
+            body: ["Open Sans", "ui-sans-serif", "system-ui", "sans-serif"]
+          },
+          extend: {
+            colors: {
+              neutral: {
+                50: "#f7f7f7",
+                100: "#eeeeee",
+                200: "#e0e0e0",
+                300: "#cacaca",
+                400: "#b1b1b1",
+                500: "#999999",
+                600: "#7f7f7f",
+                700: "#676767",
+                800: "#545454",
+                900: "#464646",
+                950: "#282828"
+              },
+              primary: {
+                50: "#f3f1ff",
+                100: "#e9e5ff",
+                200: "#d5cfff",
+                300: "#b7a9ff",
+                400: "#9478ff",
+                500: "#7341ff",
+                600: "#631bff",
+                700: "#611bf8",
+                800: "#4607d0",
+                900: "#3c08aa",
+                950: "#220174",
+                DEFAULT: "#611bf8"
+              }
+            }
+          },
+          fontSize: {
+            xs: ["12px", { lineHeight: "19.2px" }],
+            sm: ["14px", { lineHeight: "21px" }],
+            base: ["16px", { lineHeight: "25.6px" }],
+            lg: ["18px", { lineHeight: "27px" }],
+            xl: ["20px", { lineHeight: "28px" }],
+            "2xl": ["24px", { lineHeight: "31.2px" }],
+            "3xl": ["30px", { lineHeight: "36px" }],
+            "4xl": ["36px", { lineHeight: "41.4px" }],
+            "5xl": ["48px", { lineHeight: "52.8px" }],
+            "6xl": ["60px", { lineHeight: "66px" }],
+            "7xl": ["72px", { lineHeight: "75.6px" }],
+            "8xl": ["96px", { lineHeight: "100.8px" }],
+            "9xl": ["128px", { lineHeight: "134.4px" }]
+          },
+          borderRadius: {
+            none: "0px",
+            sm: "6px",
+            DEFAULT: "12px",
+            md: "18px",
+            lg: "24px",
+            xl: "36px",
+            "2xl": "48px",
+            "3xl": "72px",
+            full: "9999px"
+          }
+        },
+        plugins: [],
+        important: '#webcrumbs'
+      };
+    </script>
+  </head>
+
+  <body class="bg-neutral-100 font-sans p-6">
+    <div id="webcrumbs">
+      <div class="w-full max-w-[1000px] mx-auto bg-blue-50 border-[10px] border-blue-900 p-4 sm:p-6 shadow-[12px_12px_0px_rgba(0,0,0,0.3)]">
+        <h1 class="text-3xl sm:text-4xl font-black text-blue-900 mb-6 text-center uppercase tracking-widest bg-yellow-200 p-4 border-[4px] border-blue-900 shadow-[8px_8px_0px_rgba(30,58,138,1)] font-title">
+          FUT CCOMP
+        </h1>
+
+        <div id="sorteio" class="mb-6 bg-blue-100 p-6 border-[6px] border-blue-900 shadow-[10px_10px_0px_rgba(30,58,138,0.7)]">
+          <h2 class="text-xl font-semibold text-blue-700 mb-4">Ajustes</h2>
+
+          <div class="mt-4">
+            <label class="block text-sm font-black text-blue-900 mb-2 uppercase tracking-wider bg-blue-200 p-2 border-[3px] border-blue-900 inline-block">
+              Jogadores por Time
+            </label>
+            <input id="team-size" type="number" min="1" max="11" value="5" class="w-full px-3 py-3 border-[5px] border-blue-900 bg-blue-50 hover:bg-blue-100 transition-all text-xl font-bold focus:outline-none focus:border-blue-700" />
+          </div>
+
+          <div class="mt-6">
+            <label class="block text-sm font-black text-blue-900 mb-2 uppercase tracking-wider bg-blue-200 p-2 border-[3px] border-blue-900 inline-block">
+              Nomes dos Jogadores
+            </label>
+            <textarea id="player-names" class="w-full px-3 py-2 border-[5px] border-blue-800 bg-blue-50 hover:bg-blue-100 transition-all h-32 resize-y focus:outline-none"></textarea>
+          </div>
+
+          <button onclick="distributePlayersToTeams()" class="mt-4 px-4 py-2 bg-blue-600 text-white border-[3px] border-blue-900 hover:bg-blue-700 transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md hover:shadow-lg">
+            <span class="material-symbols-outlined align-middle mr-1">sports_soccer</span>
+            Sortear
+          </button>
+          <button onclick="showTimer()" class="mt-4 inline-block px-4 py-2 bg-red-500 text-white border-[3px] border-red-900 hover:bg-red-700 transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md hover:shadow-lg">
+            <span class="material-symbols-outlined align-middle mr-1">schedule</span>
+            Cronômetro
+          </button>          
+          
+        </div>
+
+        <div id="teams-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"></div>
+
+        <div class="mt-10 bg-white p-6 border-[6px] border-blue-800 shadow-[10px_10px_0px_rgba(30,58,138,0.7)] hover:shadow-[5px_5px_0px_rgba(30,58,138,0.7)]">
+          <h3 class="text-xl font-black text-blue-700 mb-4 uppercase bg-neutral-100 px-4 py-2 border-[3px] border-blue-800 inline-block">
+            Jogadores Reservas
+          </h3>
+          <div id="reserve-players" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function parsePlayers(input) {
+        return input
+          .split(/[\n,]+/)
+          .map(p => p.replace(/^[^a-zA-ZÀ-ÿ]+/, '').replace(/[^a-zA-ZÀ-ÿ0-9\s]/g, '').trim())
+          .filter(p => p.length > 0);
+      }
+
+      function distributePlayersToTeams() {
+        const rawInput = document.getElementById('player-names').value;
+        const players = parsePlayers(rawInput);
+        const teamSize = parseInt(document.getElementById('team-size').value) || 5;
+        const numTeams = Math.floor(players.length / teamSize);
+
+        const teamsContainer = document.getElementById('teams-container');
+        teamsContainer.innerHTML = '';
+
+        const reserveContainer = document.getElementById('reserve-players');
+        reserveContainer.innerHTML = '';
+
+        const shuffled = [...players];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+
+        const clubThemes = [
+  {
+    name: 'Real Madrid',
+    bg: 'bg-yellow-100',
+    border: 'border-yellow-700',
+    logo: 'https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg'
+  },
+  {
+  name: 'Barcelona',
+  bg: 'bg-[#A50044]',   
+border: 'border-[#004D98]', 
+  logo: 'https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg'
+},
+
+  {
+    name: 'Manchester United',
+    bg: 'bg-red-200',
+    border: 'border-red-800',
+    logo: 'https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg'
+  },
+  {
+    name: 'Juventus',
+    bg: 'bg-neutral-200',
+    border: 'border-neutral-700',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/d/da/Juventus_Logo.png'
+  },
+  {
+    name: 'Bayern Munich',
+    bg: 'bg-red-100',
+    border: 'border-red-600',
+    logo: 'https://logos-world.net/wp-content/uploads/2020/06/FC-Bayern-Munchen-emblem.png'
+  },
+  {
+    name: 'Paris Saint-Germain',
+    bg: 'bg-blue-100',
+    border: 'border-blue-700',
+    logo: 'https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg'
+  },
+];
+
+for (let i = 0; i < numTeams; i++) {
+  const club = clubThemes[i % clubThemes.length];
+  const teamEl = document.createElement('div');
+  teamEl.className = `team-card ${club.bg} p-6 border-[6px] ${club.border} shadow-[10px_10px_0px_rgba(30,58,138,0.7)] hover:shadow-[5px_5px_0px_rgba(30,58,138,0.7)] transition-all`;
+  teamEl.innerHTML = `
+    <div class="flex items-center gap-3 mb-4">
+      <img src="${club.logo}" alt="${club.name} Logo" class="w-10 h-10 object-contain"/>
+      <h3 class="text-xl font-black text-blue-900 uppercase tracking-wider">${club.name}</h3>
+    </div>
+    <p class="text-sm text-gray-900 mb-2">Membros: ${teamSize}</p>
+    <div class="players-list grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+  `;
+  teamsContainer.appendChild(teamEl);
+}
+
+
+        let index = 0;
+        const teamEls = document.querySelectorAll('.team-card');
+        for (let i = 0; i < teamEls.length; i++) {
+          const list = teamEls[i].querySelector('.players-list');
+          for (let j = 0; j < teamSize && index < shuffled.length; j++) {
+            const player = shuffled[index++];
+            const div = document.createElement('div');
+            div.className = 'player-card bg-blue-100 p-3 border-[3px] border-blue-300 hover:bg-blue-200 flex items-center transition-all hover:shadow-[4px_4px_0px_rgba(30,58,138,0.4)]';
+            div.innerHTML = `<span class="material-symbols-outlined align-middle mr-1 text-blue-600">person</span>${player}`;
+            list.appendChild(div);
+          }
+        }
+
+        while (index < shuffled.length) {
+          const player = shuffled[index++];
+          const div = document.createElement('div');
+          div.className = 'player-card bg-neutral-100 p-3 border-[3px] border-neutral-300 hover:bg-neutral-200 flex items-center transition-all hover:shadow-[4px_4px_0px_rgba(115,115,115,0.4)]';
+          div.innerHTML = `<span class="material-symbols-outlined align-middle mr-1 text-neutral-600">person</span>${player}`;
+          reserveContainer.appendChild(div);
+        }
+      }
+    </script>
+    <script>
+      function showTimer() {
+        document.getElementById('sorteio').innerHTML = `
+          <div class="mt-10 bg-yellow-100 p-6 border-[6px] border-blue-900 shadow-[10px_10px_0px_rgba(30,58,138,0.7)] w-full max-w-[500px] mx-auto">
+            <h3 class="text-xl font-black text-blue-900 uppercase tracking-wider mb-4">Cronômetro</h3>
+            <div id="timer-display" class="text-5xl font-bold text-blue-800 text-center mb-6 font-title">00:00</div>
+            <div class="flex justify-center gap-4">
+              <button id="pause-btn" class="bg-blue-600 text-white px-4 py-2 border-[3px] border-blue-900 hover:bg-blue-700 transition-all shadow-md hover:shadow-lg">
+                <span class="material-symbols-outlined align-middle mr-1">play_arrow</span>Play
+              </button>
+              <button id="reset-btn" class="bg-white text-blue-900 px-4 py-2 border-[3px] border-blue-900 hover:bg-blue-100 transition-all shadow-md hover:shadow-lg">
+                <span class="material-symbols-outlined align-middle mr-1">restart_alt</span>Zerar
+              </button>
+            </div>
+          </div>
+        `;
+    
+        // Após injetar o HTML, conectar os eventos e variáveis
+        initializeTimer();
+      }
+    
+      let timerDisplay, pauseBtn, resetBtn;
+      let timer = null;
+      let totalSeconds = 0;
+      let isRunning = false;
+    
+      function initializeTimer() {
+        timerDisplay = document.getElementById("timer-display");
+        pauseBtn = document.getElementById("pause-btn");
+        resetBtn = document.getElementById("reset-btn");
+    
+        pauseBtn.addEventListener("click", toggleTimer);
+        resetBtn.addEventListener("click", resetTimer);
+    
+        updateDisplay();
+      }
+    
+      function updateDisplay() {
+        const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, "0");
+        const seconds = String(totalSeconds % 60).padStart(2, "0");
+        timerDisplay.textContent = `${minutes}:${seconds}`;
+      }
+    
+      function startTimer() {
+        if (!isRunning) {
+          timer = setInterval(() => {
+            totalSeconds++;
+            updateDisplay();
+          }, 1000);
+          isRunning = true;
+        }
+      }
+    
+      function toggleTimer() {
+        if (isRunning) {
+          clearInterval(timer);
+          isRunning = false;
+          pauseBtn.innerHTML = '<span class="material-symbols-outlined align-middle mr-1">play_arrow</span>Continuar';
+        } else {
+          startTimer();
+          pauseBtn.innerHTML = '<span class="material-symbols-outlined align-middle mr-1">pause</span>Pausar';
+        }
+      }
+    
+      function resetTimer() {
+        clearInterval(timer);
+        totalSeconds = 0;
+        updateDisplay();
+        isRunning = false;
+        pauseBtn.innerHTML = '<span class="material-symbols-outlined align-middle mr-1">play_arrow</span>Iniciar';
+      }
+    </script>
+    
+    
+  </body>
+</html>
