@@ -2,21 +2,44 @@
 <html lang="pt-br">
   <head>
     <meta property="og:title" content="Futebol CCOMP" />
-    <meta property="og:description" content="Futebol CCOMP - Só joga quem pisou na neve e sentiu o frio da Europa." />
-    <meta property="og:image" content="https://m4rcxs.github.io/fut-ccomp/preview.jpg" />
+    <meta
+      property="og:description"
+      content="Futebol CCOMP - Só joga quem pisou na neve e sentiu o frio da Europa."
+    />
+    <meta
+      property="og:image"
+      content="https://m4rcxs.github.io/fut-ccomp/preview.jpg"
+    />
     <meta property="og:url" content="https://m4rcxs.github.io/fut-ccomp" />
     <meta property="og:type" content="website" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Futebol CCOMP ⚽" />
-    <meta name="twitter:description" content="Futebol CCOMP - Só joga quem pisou na neve e sentiu o frio da Europa." />
-    <meta name="twitter:image" content="https://m4rcxs.github.io/fut-ccomp/preview.jpg" />
+    <meta
+      name="twitter:description"
+      content="Futebol CCOMP - Só joga quem pisou na neve e sentiu o frio da Europa."
+    />
+    <meta
+      name="twitter:image"
+      content="https://m4rcxs.github.io/fut-ccomp/preview.jpg"
+    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <title>FUT CCOMP</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -26,7 +49,7 @@
           fontFamily: {
             sans: ["Open Sans", "ui-sans-serif", "system-ui", "sans-serif"],
             title: ["Lato", "ui-sans-serif", "system-ui", "sans-serif"],
-            body: ["Open Sans", "ui-sans-serif", "system-ui", "sans-serif"]
+            body: ["Open Sans", "ui-sans-serif", "system-ui", "sans-serif"],
           },
           extend: {
             colors: {
@@ -41,7 +64,7 @@
                 700: "#676767",
                 800: "#545454",
                 900: "#464646",
-                950: "#282828"
+                950: "#282828",
               },
               primary: {
                 50: "#f3f1ff",
@@ -55,9 +78,9 @@
                 800: "#4607d0",
                 900: "#3c08aa",
                 950: "#220174",
-                DEFAULT: "#611bf8"
-              }
-            }
+                DEFAULT: "#611bf8",
+              },
+            },
           },
           fontSize: {
             xs: ["12px", { lineHeight: "19.2px" }],
@@ -72,7 +95,7 @@
             "6xl": ["60px", { lineHeight: "66px" }],
             "7xl": ["72px", { lineHeight: "75.6px" }],
             "8xl": ["96px", { lineHeight: "100.8px" }],
-            "9xl": ["128px", { lineHeight: "134.4px" }]
+            "9xl": ["128px", { lineHeight: "134.4px" }],
           },
           borderRadius: {
             none: "0px",
@@ -83,57 +106,106 @@
             xl: "36px",
             "2xl": "48px",
             "3xl": "72px",
-            full: "9999px"
-          }
+            full: "9999px",
+          },
         },
         plugins: [],
-        important: '#webcrumbs'
+        important: "#webcrumbs",
       };
     </script>
   </head>
 
   <body class="bg-neutral-100 font-sans p-6">
     <div id="webcrumbs">
-      <div class="w-full max-w-[1000px] mx-auto bg-blue-50 border-[10px] border-blue-900 p-4 sm:p-6 shadow-[12px_12px_0px_rgba(0,0,0,0.3)]">
-        <h1 class="text-3xl sm:text-4xl font-black text-blue-900 mb-6 text-center uppercase tracking-widest bg-yellow-200 p-4 border-[4px] border-blue-900 shadow-[8px_8px_0px_rgba(30,58,138,1)] font-title">
+      <div
+        class="w-full max-w-[1000px] mx-auto bg-blue-50 border-[10px] border-blue-900 p-4 sm:p-6 shadow-[12px_12px_0px_rgba(0,0,0,0.3)]"
+      >
+        <a
+          href="index.html"	
+          class="cursor-pointer text-3xl sm:text-4xl font-black text-blue-900 mb-6 text-center uppercase tracking-widest bg-yellow-200 p-4 border-[4px] border-blue-900 shadow-[8px_8px_0px_rgba(30,58,138,1)] font-title"
+        >
           FUT CCOMP
-        </h1>
+    </a>
 
-        <div id="sorteio" class="mb-6 bg-blue-100 p-6 border-[6px] border-blue-900 shadow-[10px_10px_0px_rgba(30,58,138,0.7)]">
+        <div
+          id="sorteio"
+          class="mb-6 bg-blue-100 p-6 border-[6px] border-blue-900 shadow-[10px_10px_0px_rgba(30,58,138,0.7)]"
+        >
           <h2 class="text-xl font-semibold text-blue-700 mb-4">Ajustes</h2>
 
           <div class="mt-4">
-            <label class="block text-sm font-black text-blue-900 mb-2 uppercase tracking-wider bg-blue-200 p-2 border-[3px] border-blue-900 inline-block">
+            <label
+              class="block text-sm font-black text-blue-900 mb-2 uppercase tracking-wider bg-blue-200 p-2 border-[3px] border-blue-900 inline-block"
+            >
               Jogadores por Time
             </label>
-            <input id="team-size" type="number" min="1" max="11" value="5" class="w-full px-3 py-3 border-[5px] border-blue-900 bg-blue-50 hover:bg-blue-100 transition-all text-xl font-bold focus:outline-none focus:border-blue-700" />
+            <input
+              id="team-size"
+              type="number"
+              min="1"
+              max="11"
+              value="5"
+              class="w-full px-3 py-3 border-[5px] border-blue-900 bg-blue-50 hover:bg-blue-100 transition-all text-xl font-bold focus:outline-none focus:border-blue-700"
+            />
           </div>
 
           <div class="mt-6">
-            <label class="block text-sm font-black text-blue-900 mb-2 uppercase tracking-wider bg-blue-200 p-2 border-[3px] border-blue-900 inline-block">
+            <label
+              class="block text-sm font-black text-blue-900 mb-2 uppercase tracking-wider bg-blue-200 p-2 border-[3px] border-blue-900 inline-block"
+            >
               Nomes dos Jogadores
             </label>
-            <textarea id="player-names" class="w-full px-3 py-2 border-[5px] border-blue-800 bg-blue-50 hover:bg-blue-100 transition-all h-32 resize-y focus:outline-none"></textarea>
+            <textarea
+              id="player-names"
+              class="w-full px-3 py-2 border-[5px] border-blue-800 bg-blue-50 hover:bg-blue-100 transition-all h-32 resize-y focus:outline-none"
+            ></textarea>
           </div>
-
-          <button onclick="distributePlayersToTeams()" class="mt-4 px-4 py-2 bg-blue-600 text-white border-[3px] border-blue-900 hover:bg-blue-700 transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md hover:shadow-lg">
-            <span class="material-symbols-outlined align-middle mr-1">sports_soccer</span>
-            Sortear
-          </button>
-          <button onclick="showTimer()" class="mt-4 inline-block px-4 py-2 bg-red-500 text-white border-[3px] border-red-900 hover:bg-red-700 transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md hover:shadow-lg">
-            <span class="material-symbols-outlined align-middle mr-1">schedule</span>
-            Cronômetro
-          </button>          
-          
+            <button
+              onclick="distributePlayersToTeams()"
+              class="mt-4 px-4 py-2 bg-blue-600 text-white border-[3px] border-blue-900 hover:bg-blue-700 transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md hover:shadow-lg"
+            >
+              <span class="material-symbols-outlined align-middle mr-1"
+                >sports_soccer</span
+              >
+              Sortear
+            </button>
+            <button
+              onclick="showTimer()"
+              class="mt-4 px-4 py-2 bg-red-500 text-white border-[3px] border-red-900 hover:bg-red-700 transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md hover:shadow-lg"
+            >
+              <span class="material-symbols-outlined align-middle mr-1"
+                >schedule</span
+              >
+              Cronômetro
+            </button>
+            <button
+              onclick="showStats()"
+              class="mt-4 px-4 py-2 bg-green-600 text-white border-[3px] border-green-900 hover:bg-green-700 transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 shadow-md hover:shadow-lg"
+            >
+              <span class="material-symbols-outlined align-middle mr-1"
+                >bar_chart</span
+              >
+              Estatísticas
+            </button>
         </div>
 
-        <div id="teams-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"></div>
+        <div
+          id="teams-container"
+          class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"
+        ></div>
 
-        <div class="mt-10 bg-white p-6 border-[6px] border-blue-800 shadow-[10px_10px_0px_rgba(30,58,138,0.7)] hover:shadow-[5px_5px_0px_rgba(30,58,138,0.7)]">
-          <h3 class="text-xl font-black text-blue-700 mb-4 uppercase bg-neutral-100 px-4 py-2 border-[3px] border-blue-800 inline-block">
+        <div
+          class="mt-10 bg-white p-6 border-[6px] border-blue-800 shadow-[10px_10px_0px_rgba(30,58,138,0.7)] hover:shadow-[5px_5px_0px_rgba(30,58,138,0.7)]"
+        >
+          <h3
+            class="text-xl font-black text-blue-700 mb-4 uppercase bg-neutral-100 px-4 py-2 border-[3px] border-blue-800 inline-block"
+          >
             Jogadores Reservas
           </h3>
-          <div id="reserve-players" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3"></div>
+          <div
+            id="reserve-players"
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3"
+          ></div>
         </div>
       </div>
     </div>
@@ -142,110 +214,150 @@
       function parsePlayers(input) {
         return input
           .split(/[\n,]+/)
-          .map(p => p.replace(/^[^a-zA-ZÀ-ÿ]+/, '').replace(/[^a-zA-ZÀ-ÿ0-9\s]/g, '').trim())
-          .filter(p => p.length > 0);
+          .map((p) =>
+            p
+              .replace(/^[^a-zA-ZÀ-ÿ]+/, "")
+              .replace(/[^a-zA-ZÀ-ÿ0-9\s]/g, "")
+              .trim()
+          )
+          .filter((p) => p.length > 0);
       }
 
       function distributePlayersToTeams() {
-        const rawInput = document.getElementById('player-names').value;
-        const players = parsePlayers(rawInput);
-        const teamSize = parseInt(document.getElementById('team-size').value) || 5;
-        const numTeams = Math.floor(players.length / teamSize);
+  const rawInput = document.getElementById('player-names').value;
+  const players = parsePlayers(rawInput);
+  const teamSize = parseInt(document.getElementById('team-size').value) || 5;
+  const numTeams = Math.floor(players.length / teamSize);
 
-        const teamsContainer = document.getElementById('teams-container');
-        teamsContainer.innerHTML = '';
+  const teamsContainer = document.getElementById('teams-container');
+  teamsContainer.innerHTML = '';
 
-        const reserveContainer = document.getElementById('reserve-players');
-        reserveContainer.innerHTML = '';
+  const reserveContainer = document.getElementById('reserve-players');
+  reserveContainer.innerHTML = '';
 
-        const shuffled = [...players];
-        for (let i = shuffled.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-        }
+  const shuffled = [...players];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
 
-        const clubThemes = [
-  {
-    name: 'Real Madrid',
-    bg: 'bg-yellow-100',
-    border: 'border-yellow-700',
-    logo: 'https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg'
-  },
-  {
-  name: 'Barcelona',
-  bg: 'bg-[#A50044]',   
-border: 'border-[#004D98]', 
-  logo: 'https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg'
-},
+  const clubThemes = [
+    {
+      name: 'Real Madrid',
+      bg: 'bg-yellow-100',
+      border: 'border-yellow-700',
+      logo: 'https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg'
+    },
+    {
+      name: 'Barcelona',
+      bg: 'bg-[#A50044]',
+      border: 'border-[#004D98]',
+      logo: 'https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg'
+    },
+    {
+      name: 'Manchester United',
+      bg: 'bg-red-200',
+      border: 'border-red-800',
+      logo: 'https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg'
+    },
+    {
+      name: 'Juventus',
+      bg: 'bg-neutral-200',
+      border: 'border-neutral-700',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/d/da/Juventus_Logo.png'
+    },
+    {
+      name: 'Bayern Munich',
+      bg: 'bg-red-100',
+      border: 'border-red-600',
+      logo: 'https://logos-world.net/wp-content/uploads/2020/06/FC-Bayern-Munchen-emblem.png'
+    },
+    {
+      name: 'Paris Saint-Germain',
+      bg: 'bg-blue-100',
+      border: 'border-blue-700',
+      logo: 'https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg'
+    }
+  ];
 
-  {
-    name: 'Manchester United',
-    bg: 'bg-red-200',
-    border: 'border-red-800',
-    logo: 'https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg'
-  },
-  {
-    name: 'Juventus',
-    bg: 'bg-neutral-200',
-    border: 'border-neutral-700',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/d/da/Juventus_Logo.png'
-  },
-  {
-    name: 'Bayern Munich',
-    bg: 'bg-red-100',
-    border: 'border-red-600',
-    logo: 'https://logos-world.net/wp-content/uploads/2020/06/FC-Bayern-Munchen-emblem.png'
-  },
-  {
-    name: 'Paris Saint-Germain',
-    bg: 'bg-blue-100',
-    border: 'border-blue-700',
-    logo: 'https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg'
-  },
-];
+  let index = 0;
+  const savedTeams = [];
 
-for (let i = 0; i < numTeams; i++) {
-  const club = clubThemes[i % clubThemes.length];
-  const teamEl = document.createElement('div');
-  teamEl.className = `team-card ${club.bg} p-6 border-[6px] ${club.border} shadow-[10px_10px_0px_rgba(30,58,138,0.7)] hover:shadow-[5px_5px_0px_rgba(30,58,138,0.7)] transition-all`;
-  teamEl.innerHTML = `
-    <div class="flex items-center gap-3 mb-4">
-      <img src="${club.logo}" alt="${club.name} Logo" class="w-10 h-10 object-contain"/>
-      <h3 class="text-xl font-black text-blue-900 uppercase tracking-wider">${club.name}</h3>
-    </div>
-    <p class="text-sm text-gray-900 mb-2">Membros: ${teamSize}</p>
-    <div class="players-list grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+  for (let i = 0; i < numTeams; i++) {
+    const club = clubThemes[i % clubThemes.length];
+    const teamMembers = [];
+
+    const teamEl = document.createElement('div');
+    teamEl.className = `team-card ${club.bg} p-6 border-[6px] ${club.border} shadow-[10px_10px_0px_rgba(30,58,138,0.7)] hover:shadow-[5px_5px_0px_rgba(30,58,138,0.7)] transition-all`;
+    teamEl.innerHTML = `
+      <div class="flex items-center gap-3 mb-4">
+        <img src="${club.logo}" alt="${club.name} Logo" class="w-10 h-10 object-contain"/>
+        <h3 class="text-xl font-black text-blue-900 uppercase tracking-wider flex items-center gap-2">
+          ${club.name}
+          <button onclick="updateWins('${club.name}', -1)" class="text-red-600 font-bold">-</button>
+          <span id="wins-${club.name}" class="px-2 font-mono">${getWins(club.name)}</span>
+          <button onclick="updateWins('${club.name}', 1)" class="text-green-600 font-bold">+</button>
+        </h3>
+      </div>
+      <p class="text-sm text-gray-900 mb-2">Membros: ${teamSize}</p>
+      <div class="players-list grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+    `;
+    teamsContainer.appendChild(teamEl);
+
+    const list = teamEl.querySelector('.players-list');
+
+    for (let j = 0; j < teamSize && index < shuffled.length; j++) {
+      const player = shuffled[index++];
+      teamMembers.push(player);
+
+      const div = document.createElement('div');
+      div.className = 'player-card bg-blue-100 p-3 border-[3px] border-blue-300 hover:bg-blue-200 flex items-center transition-all hover:shadow-[4px_4px_0px_rgba(30,58,138,0.4)]';
+      div.innerHTML = `
+        <span class="material-symbols-outlined align-middle mr-1 text-blue-600">person</span>
+        <span class="flex-1">${player}</span>
+        <button onclick="updateGoals('${player}', -1)" class="text-red-600 font-bold">-</button>
+        <span id="goals-${player}" class="px-2 font-mono">${getGoals(player)}</span>
+        <button onclick="updateGoals('${player}', 1)" class="text-green-600 font-bold">+</button>
+      `;
+      list.appendChild(div);
+    }
+
+    savedTeams.push({
+      teamName: club.name,
+      members: teamMembers
+    });
+  }
+
+  const reservePlayersArray = [];
+
+while (index < shuffled.length) {
+  const player = shuffled[index++];
+  reservePlayersArray.push(player);
+
+  const div = document.createElement('div');
+  div.className = 'player-card bg-neutral-100 p-3 border-[3px] border-neutral-300 hover:bg-neutral-200 flex items-center transition-all hover:shadow-[4px_4px_0px_rgba(115,115,115,0.4)]';
+  div.innerHTML = `
+    <span class="material-symbols-outlined align-middle mr-1 text-neutral-600">person</span>
+    <span class="flex-1">${player}</span>
+    <button onclick="updateGoals('${player}', -1)" class="text-red-600 font-bold">-</button>
+    <span id="goals-${player}" class="px-2 font-mono">${getGoals(player)}</span>
+    <button onclick="updateGoals('${player}', 1)" class="text-green-600 font-bold">+</button>
   `;
-  teamsContainer.appendChild(teamEl);
+  reserveContainer.appendChild(div);
 }
 
+// Salvar times e reservas no localStorage
+localStorage.setItem('savedTeams', JSON.stringify(savedTeams));
+localStorage.setItem('reservePlayers', JSON.stringify(reservePlayersArray));
 
-        let index = 0;
-        const teamEls = document.querySelectorAll('.team-card');
-        for (let i = 0; i < teamEls.length; i++) {
-          const list = teamEls[i].querySelector('.players-list');
-          for (let j = 0; j < teamSize && index < shuffled.length; j++) {
-            const player = shuffled[index++];
-            const div = document.createElement('div');
-            div.className = 'player-card bg-blue-100 p-3 border-[3px] border-blue-300 hover:bg-blue-200 flex items-center transition-all hover:shadow-[4px_4px_0px_rgba(30,58,138,0.4)]';
-            div.innerHTML = `<span class="material-symbols-outlined align-middle mr-1 text-blue-600">person</span>${player}`;
-            list.appendChild(div);
-          }
-        }
 
-        while (index < shuffled.length) {
-          const player = shuffled[index++];
-          const div = document.createElement('div');
-          div.className = 'player-card bg-neutral-100 p-3 border-[3px] border-neutral-300 hover:bg-neutral-200 flex items-center transition-all hover:shadow-[4px_4px_0px_rgba(115,115,115,0.4)]';
-          div.innerHTML = `<span class="material-symbols-outlined align-middle mr-1 text-neutral-600">person</span>${player}`;
-          reserveContainer.appendChild(div);
-        }
-      }
+}
+
     </script>
     <script>
       function showTimer() {
-        document.getElementById('sorteio').innerHTML = `
-          <div class="mt-10 bg-yellow-100 p-6 border-[6px] border-blue-900 shadow-[10px_10px_0px_rgba(30,58,138,0.7)] w-full max-w-[500px] mx-auto">
+        document.getElementById("sorteio").innerHTML = `
+          <div class="flex mt-10 bg-yellow-100 p-6 border-[6px] border-blue-900 shadow-[10px_10px_0px_rgba(30,58,138,0.7)] w-full max-w-[500px] mx-auto">
             <h3 class="text-xl font-black text-blue-900 uppercase tracking-wider mb-4">Cronômetro</h3>
             <div id="timer-display" class="text-5xl font-bold text-blue-800 text-center mb-6 font-title">00:00</div>
             <div class="flex justify-center gap-4">
@@ -258,33 +370,33 @@ for (let i = 0; i < numTeams; i++) {
             </div>
           </div>
         `;
-    
+
         // Após injetar o HTML, conectar os eventos e variáveis
         initializeTimer();
       }
-    
+
       let timerDisplay, pauseBtn, resetBtn;
       let timer = null;
       let totalSeconds = 0;
       let isRunning = false;
-    
+
       function initializeTimer() {
         timerDisplay = document.getElementById("timer-display");
         pauseBtn = document.getElementById("pause-btn");
         resetBtn = document.getElementById("reset-btn");
-    
+
         pauseBtn.addEventListener("click", toggleTimer);
         resetBtn.addEventListener("click", resetTimer);
-    
+
         updateDisplay();
       }
-    
+
       function updateDisplay() {
         const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, "0");
         const seconds = String(totalSeconds % 60).padStart(2, "0");
         timerDisplay.textContent = `${minutes}:${seconds}`;
       }
-    
+
       function startTimer() {
         if (!isRunning) {
           timer = setInterval(() => {
@@ -294,25 +406,259 @@ for (let i = 0; i < numTeams; i++) {
           isRunning = true;
         }
       }
-    
+
       function toggleTimer() {
         if (isRunning) {
           clearInterval(timer);
           isRunning = false;
-          pauseBtn.innerHTML = '<span class="material-symbols-outlined align-middle mr-1">play_arrow</span>Continuar';
+          pauseBtn.innerHTML =
+            '<span class="material-symbols-outlined align-middle mr-1">play_arrow</span>Continuar';
         } else {
           startTimer();
-          pauseBtn.innerHTML = '<span class="material-symbols-outlined align-middle mr-1">pause</span>Pausar';
+          pauseBtn.innerHTML =
+            '<span class="material-symbols-outlined align-middle mr-1">pause</span>Pausar';
         }
       }
-    
+
       function resetTimer() {
         clearInterval(timer);
         totalSeconds = 0;
         updateDisplay();
         isRunning = false;
-        pauseBtn.innerHTML = '<span class="material-symbols-outlined align-middle mr-1">play_arrow</span>Iniciar';
+        pauseBtn.innerHTML =
+          '<span class="material-symbols-outlined align-middle mr-1">play_arrow</span>Iniciar';
       }
+    </script>
+    <!-- Adicione isso no final do <body> antes de fechar -->
+    <script>
+      function getGoals(player) {
+        const goals = JSON.parse(localStorage.getItem("playerGoals") || "{}");
+        return goals[player] || 0;
+      }
+
+      function updateGoals(player, delta) {
+        const goals = JSON.parse(localStorage.getItem("playerGoals") || "{}");
+        goals[player] = (goals[player] || 0) + delta;
+        if (goals[player] < 0) goals[player] = 0;
+        localStorage.setItem("playerGoals", JSON.stringify(goals));
+        document.getElementById(`goals-${player}`).innerText = goals[player];
+      }
+
+      function getWins(team) {
+        const wins = JSON.parse(localStorage.getItem("teamWins") || "{}");
+        return wins[team] || 0;
+      }
+
+      function updateWins(team, delta) {
+        const wins = JSON.parse(localStorage.getItem("teamWins") || "{}");
+        wins[team] = (wins[team] || 0) + delta;
+        if (wins[team] < 0) wins[team] = 0;
+        localStorage.setItem("teamWins", JSON.stringify(wins));
+        document.getElementById(`wins-${team}`).innerText = wins[team];
+      }
+    </script>
+    <!-- Adicione o script a seguir no final do body -->
+    <script>
+      // Substitua a função showStats pelo código abaixo:
+      function showStats() {
+        const playerGoals = JSON.parse(
+          localStorage.getItem("playerGoals") || "{}"
+        );
+        const teamWins = JSON.parse(localStorage.getItem("teamWins") || "{}");
+
+        const topPlayers = Object.entries(playerGoals)
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 5);
+
+        const topTeams = Object.entries(teamWins)
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 3);
+
+        const teamLogos = {
+          "Real Madrid":
+            "https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg",
+          Barcelona:
+            "https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg",
+          "Manchester United":
+            "https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg",
+          Juventus:
+            "https://upload.wikimedia.org/wikipedia/commons/d/da/Juventus_Logo.png",
+          "Bayern Munich":
+            "https://logos-world.net/wp-content/uploads/2020/06/FC-Bayern-Munchen-emblem.png",
+          "Paris Saint-Germain":
+            "https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg",
+        };
+
+        document.getElementById("sorteio").innerHTML = `
+    <div class="mt-10 bg-green-100 p-6 border-[6px] border-green-900 shadow-[10px_10px_0px_rgba(30,58,138,0.7)] w-full max-w-[800px] mx-auto">
+      <div class="mb-4">
+        <h3 class="text-xl font-black text-green-900 uppercase tracking-wider">Top Estatísticas</h3>
+        <button onclick="resetAllGoals()" class="flex items-center justify-center text-sm bg-red-600 text-white px-3 py-1 border-[3px] border-red-900 hover:bg-red-700 transition-all">
+          Zerar
+        </button>
+        </div>
+
+      <h4 class="text-lg font-bold text-green-800 mb-2">Top 5 Jogadores</h4>
+      <canvas id="playerChart" class="mb-6"></canvas>
+
+      <h4 class="text-lg font-bold text-green-800 mb-2">Top 3 Times</h4>
+      <div class="flex gap-4 justify-around items-center mb-6">
+        ${topTeams
+          .map(
+            ([team, wins]) => `
+          <div class="text-center">
+            <img src="${
+              teamLogos[team] || ""
+            }" alt="${team}" class="w-16 h-16 mx-auto mb-2"/>
+            <p class="font-bold">${team}</p>
+            <p class="text-green-700">Vitórias: ${wins}</p>
+          </div>
+        `
+          )
+          .join("")}
+      </div>
+      <canvas id="teamChart"></canvas>
+    </div>
+  `;
+
+        const playerCtx = document
+          .getElementById("playerChart")
+          .getContext("2d");
+        const teamCtx = document.getElementById("teamChart").getContext("2d");
+
+        new Chart(playerCtx, {
+          type: "bar",
+          data: {
+            labels: topPlayers.map((p) => p[0]),
+            datasets: [
+              {
+                label: "Gols",
+                data: topPlayers.map((p) => p[1]),
+                backgroundColor: "rgba(34, 197, 94, 0.5)",
+                borderColor: "rgba(34, 197, 94, 1)",
+                borderWidth: 2,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: { stepSize: 1 },
+              },
+            },
+          },
+        });
+
+        new Chart(teamCtx, {
+          type: "bar",
+          data: {
+            labels: topTeams.map((t) => t[0]),
+            datasets: [
+              {
+                label: "Vitórias",
+                data: topTeams.map((t) => t[1]),
+                backgroundColor: "rgba(59, 130, 246, 0.5)",
+                borderColor: "rgba(59, 130, 246, 1)",
+                borderWidth: 2,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: { stepSize: 1 },
+              },
+            },
+          },
+        });
+      }
+
+      function resetAllGoals() {
+        localStorage.removeItem("playerGoals");
+        localStorage.removeItem("teamWins");
+        localStorage.removeItem("reservePlayers");
+        localStorage.removeItem("savedTeams");
+
+        alert("Todos as estatisticas foram zeradas!");
+        showStats();
+      }
+    </script>
+    <script>
+      function loadSavedTeams() {
+        const savedTeams = JSON.parse(localStorage.getItem('savedTeams') || '[]');
+        const reservePlayers = JSON.parse(localStorage.getItem('reservePlayers') || '[]');
+        if (!savedTeams.length && !reservePlayers.length) return;
+    
+        const teamsContainer = document.getElementById('teams-container');
+        const reserveContainer = document.getElementById('reserve-players');
+        teamsContainer.innerHTML = '';
+        reserveContainer.innerHTML = '';
+    
+        const teamLogos = {
+          'Real Madrid': 'https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg',
+          'Barcelona': 'https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg',
+          'Manchester United': 'https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg',
+          'Juventus': 'https://upload.wikimedia.org/wikipedia/commons/d/da/Juventus_Logo.png',
+          'Bayern Munich': 'https://logos-world.net/wp-content/uploads/2020/06/FC-Bayern-Munchen-emblem.png',
+          'Paris Saint-Germain': 'https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg'
+        };
+    
+        // Render teams
+        savedTeams.forEach(team => {
+          const logo = teamLogos[team.teamName] || '';
+          const teamEl = document.createElement('div');
+          teamEl.className = `team-card bg-white p-6 border-[6px] border-green-900 shadow-[6px_6px_0px_rgba(34,197,94,0.4)]`;
+          teamEl.innerHTML = `
+            <div class="flex items-center gap-3 mb-4">
+              <img src="${logo}" alt="${team.teamName} Logo" class="w-10 h-10 object-contain"/>
+              <h3 class="text-xl font-black text-blue-900 uppercase tracking-wider flex items-center gap-2">
+                ${team.teamName}
+                <button onclick="updateWins('${team.teamName}', -1)" class="text-red-600 font-bold">-</button>
+                <span id="wins-${team.teamName}" class="px-2 font-mono">${getWins(team.teamName)}</span>
+                <button onclick="updateWins('${team.teamName}', 1)" class="text-green-600 font-bold">+</button>
+              </h3>
+            </div>
+            <p class="text-sm text-gray-900 mb-2">Membros: ${team.members.length}</p>
+            <div class="players-list grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+          `;
+          const list = teamEl.querySelector('.players-list');
+    
+          team.members.forEach(player => {
+            const div = document.createElement('div');
+            div.className = 'player-card bg-blue-100 p-3 border-[3px] border-blue-300 hover:bg-blue-200 flex items-center transition-all';
+            div.innerHTML = `
+              <span class="material-symbols-outlined align-middle mr-1 text-blue-600">person</span>
+              <span class="flex-1">${player}</span>
+              <button onclick="updateGoals('${player}', -1)" class="text-red-600 font-bold">-</button>
+              <span id="goals-${player}" class="px-2 font-mono">${getGoals(player)}</span>
+              <button onclick="updateGoals('${player}', 1)" class="text-green-600 font-bold">+</button>
+            `;
+            list.appendChild(div);
+          });
+    
+          teamsContainer.appendChild(teamEl);
+        });
+    
+        // Render reserve players
+        reservePlayers.forEach(player => {
+          const div = document.createElement('div');
+          div.className = 'player-card bg-neutral-100 p-3 border-[3px] border-neutral-300 hover:bg-neutral-200 flex items-center transition-all';
+          div.innerHTML = `
+            <span class="material-symbols-outlined align-middle mr-1 text-neutral-600">person</span>
+            <span class="flex-1">${player}</span>
+            <button onclick="updateGoals('${player}', -1)" class="text-red-600 font-bold">-</button>
+            <span id="goals-${player}" class="px-2 font-mono">${getGoals(player)}</span>
+            <button onclick="updateGoals('${player}', 1)" class="text-green-600 font-bold">+</button>
+          `;
+          reserveContainer.appendChild(div);
+        });
+      }
+    
+      window.addEventListener('DOMContentLoaded', loadSavedTeams);
     </script>
     
     
