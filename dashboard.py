@@ -45,19 +45,43 @@ col3.metric("🎯 Taxa de Acerto", f"{green_rate:.1f}%")
 
 # Gráfico 1: Escanteios Totais vs Previstos
 st.subheader("📈 Escanteios Totais vs Previstos")
-fig1 = px.scatter(filtered_df, x="Escanteios Previstos", y="Escanteios Totais",
-                  color="Resultado da Aposta (Green/Red)",
-                  hover_data=["Time Casa x Time Visitante"],
-                  title="Dispersão de Escanteios")
+fig1 = px.scatter(
+    filtered_df,
+    x="Escanteios Previstos",
+    y="Escanteios Totais",
+    color="Resultado da Aposta (Green/Red)",
+    color_discrete_map={"GREEN": "green", "RED": "red"},
+    hover_data=["Time Casa x Time Visitante"],
+    title="Dispersão de Escanteios"
+)
 st.plotly_chart(fig1)
 
 # Gráfico 2: Resultado por Mercado
 st.subheader("📊 Resultado por Mercado")
 market_stats = filtered_df.groupby(["Mercado Indicado", "Resultado da Aposta (Green/Red)"]).size().reset_index(name="Contagem")
-fig2 = px.bar(market_stats, x="Mercado Indicado", y="Contagem", color="Resultado da Aposta (Green/Red)",
-              barmode="group", title="Resultado por Mercado")
+fig2 = px.bar(
+    market_stats,
+    x="Mercado Indicado",
+    y="Contagem",
+    color="Resultado da Aposta (Green/Red)",
+    color_discrete_map={"GREEN": "green", "RED": "red"},
+    barmode="group",
+    title="Resultado por Mercado"
+)
 st.plotly_chart(fig2)
 
-# Tabela
+
+# Tabela com formatação de cor por resultado
 st.subheader("📋 Tabela de Apostas")
-st.dataframe(filtered_df.reset_index(drop=True))
+
+def color_result(val):
+    if val == "GREEN":
+        return "color: green; font-weight: bold;"
+    elif val == "RED":
+        return "color: red; font-weight: bold;"
+    return ""
+
+styled_df = filtered_df.reset_index(drop=True).style.map(color_result, subset="Resultado da Aposta (Green/Red)")
+st.dataframe(styled_df)
+
+
