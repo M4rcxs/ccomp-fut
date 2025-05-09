@@ -18,7 +18,7 @@ df["Odd Under (Betano)"] = df["Odd Under (Betano)"].astype(str).str.replace(",",
 df["Resultado da Aposta (Green/Red)"] = df["Resultado da Aposta (Green/Red)"].str.upper().str.strip()
 
 # Título
-st.title("📊 Análise de Apostas em Escanteios (Google Sheets ao vivo)")
+st.title("📊 Análise de Apostas em Escanteios")
 
 # Filtros
 with st.sidebar:
