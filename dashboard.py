@@ -54,7 +54,8 @@ fig1 = px.scatter(
     hover_data=["Time Casa x Time Visitante"],
     title="Dispersão de Escanteios"
 )
-st.plotly_chart(fig1)
+fig1.update_layout(showlegend=False)
+st.plotly_chart(fig1, use_container_width=True)
 
 # Gráfico 2: Resultado por Mercado
 st.subheader("📊 Resultado por Mercado")
@@ -68,8 +69,8 @@ fig2 = px.bar(
     barmode="group",
     title="Resultado por Mercado"
 )
-st.plotly_chart(fig2)
-
+fig2.update_layout(showlegend=False)
+st.plotly_chart(fig2, use_container_width=True)
 
 # Tabela com formatação de cor por resultado
 st.subheader("📋 Tabela de Apostas")
@@ -83,5 +84,3 @@ def color_result(val):
 
 styled_df = filtered_df.reset_index(drop=True).style.map(color_result, subset="Resultado da Aposta (Green/Red)")
 st.dataframe(styled_df)
-
-
