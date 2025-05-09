@@ -84,3 +84,8 @@ def color_result(val):
 
 styled_df = filtered_df.reset_index(drop=True).style.map(color_result, subset="Resultado da Aposta (Green/Red)")
 st.dataframe(styled_df)
+if st.button("🔄 Recarregar Dados"):
+    st.cache_data.clear()
+    st.rerun()
+
+
