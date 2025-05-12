@@ -125,45 +125,6 @@ with col2:
     st.markdown("### ❌ Equipes")
     st.dataframe(red_teams, use_container_width=True)
 
-# 📈 Gráfico de Lucro Acumulado
-st.subheader("💰 Lucro Acumulado por Aposta")
-
-# Função para calcular lucro com base no mercado escolhido
-def calcular_lucro(row):
-    aposta = 100  # valor fixo por aposta
-    resultado = row["Resultado da Aposta (Green/Red)"]
-    mercado = row["Mercado Indicado"].lower()
-    
-    # Verifica se mercado está relacionado a over ou under
-    if "over" in mercado:
-        odd = row["Odd Over (Betano)"]
-    elif "under" in mercado:
-        odd = row["Odd Under (Betano)"]
-    else:
-        return 0  # Se mercado não reconhecido, ignora
-    
-    if resultado == "GREEN":
-        return (odd - 1) * aposta
-    elif resultado == "RED":
-        return -aposta
-    return 0
-
-# Aplicar a função ao DataFrame filtrado
-filtered_df = filtered_df.copy()  # evitar SettingWithCopyWarning
-filtered_df["Lucro"] = filtered_df.apply(calcular_lucro, axis=1)
-filtered_df["Lucro Acumulado"] = filtered_df["Lucro"].cumsum()
-filtered_df["Aposta #"] = range(1, len(filtered_df) + 1)
-
-# Gráfico de linha do lucro acumulado
-fig_lucro = px.line(
-    filtered_df,
-    x="Aposta #",
-    y="Lucro Acumulado",
-    markers=True,
-    title="Lucro Acumulado ao Longo das Apostas",
-)
-fig_lucro.update_layout(yaxis_title="Lucro (R$)", xaxis_title="Número da Aposta")
-st.plotly_chart(fig_lucro, use_container_width=True)
 
 # 📊 Taxa de Acerto por Faixa de Escanteios Previstos
 st.subheader("🎯 Taxa de Acerto por Faixa de Escanteios Previstos")
