@@ -46,15 +46,18 @@ with st.sidebar:
     # Filtro por equipe
 
 # Aplicar filtros
+filtered_df = df[
+    (df["Resultado da Aposta (Green/Red)"].isin(resultado_filter)) &
+    (df["Mercado Indicado"].isin(mercado_filter))
+]
+
+# Aplicar filtro por equipe, se necessário
 if time_selecionado != "Todos":
     filtered_df = filtered_df[
         (filtered_df["Time Casa"] == time_selecionado) |
         (filtered_df["Time Visitante"] == time_selecionado)
     ]
-filtered_df = df[
-    (df["Resultado da Aposta (Green/Red)"].isin(resultado_filter)) &
-    (df["Mercado Indicado"].isin(mercado_filter))
-]
+
 
 # Aplicar filtro por equipe, se necessário
 
