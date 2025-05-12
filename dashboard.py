@@ -17,6 +17,8 @@ df["Odd Over (Betano)"] = df["Odd Over (Betano)"].astype(str).str.replace(",", "
 df["Odd Under (Betano)"] = df["Odd Under (Betano)"].astype(str).str.replace(",", ".").astype(float)
 df["Resultado da Aposta (Green/Red)"] = df["Resultado da Aposta (Green/Red)"].str.upper().str.strip()
 
+# Criar colunas de time casa e visitante para filtros e análises
+df[["Time Casa", "Time Visitante"]] = df["Time Casa x Time Visitante"].str.split(" x ", expand=True)
 
 # Título
 st.title("📊 Análise de Apostas em Escanteios")
@@ -24,14 +26,37 @@ st.title("📊 Análise de Apostas em Escanteios")
 # Filtros
 with st.sidebar:
     st.header("Filtros")
-    resultado_filter = st.multiselect("Resultado da Aposta", options=df["Resultado da Aposta (Green/Red)"].unique(), default=df["Resultado da Aposta (Green/Red)"].unique())
-    mercado_filter = st.multiselect("Mercado Indicado", options=df["Mercado Indicado"].dropna().unique(), default=df["Mercado Indicado"].dropna().unique())
+    resultado_filter = st.multiselect(
+        "Resultado da Aposta",
+        options=df["Resultado da Aposta (Green/Red)"].unique(),
+        default=df["Resultado da Aposta (Green/Red)"].unique()
+    )
+
+    mercado_filter = st.multiselect(
+        "Mercado Indicado",
+        options=df["Mercado Indicado"].dropna().unique(),
+        default=df["Mercado Indicado"].dropna().unique()
+    )
+
+    # Obter lista única de times (casa e visitante)
+    equipes = pd.concat([df["Time Casa"], df["Time Visitante"]]).dropna().unique()
+    equipes.sort()
+    time_selecionado = st.selectbox("Filtrar por Equipe", options=["Todos"] + list(equipes))
+
+    # Filtro por equipe
 
 # Aplicar filtros
+if time_selecionado != "Todos":
+    filtered_df = filtered_df[
+        (filtered_df["Time Casa"] == time_selecionado) |
+        (filtered_df["Time Visitante"] == time_selecionado)
+    ]
 filtered_df = df[
     (df["Resultado da Aposta (Green/Red)"].isin(resultado_filter)) &
     (df["Mercado Indicado"].isin(mercado_filter))
 ]
+
+# Aplicar filtro por equipe, se necessário
 
 # KPIs
 green_count = (filtered_df["Resultado da Aposta (Green/Red)"] == "GREEN").sum()
